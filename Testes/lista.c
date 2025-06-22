@@ -2,17 +2,19 @@
 # include <stdio.h>
 # define MAX 3
 
+// Lista com Estrutura Estática usando alocação Sequencial ou Conjutiva
+
 typedef struct lista {
-    int itens[MAX]; // itens da lista (máximo de itens = 10)
+    int itens[MAX];
     int n; // número de elementos (também indica o índice que estamos)
 } Lista;
 
 Lista* CriarLista() {
     Lista *p = (Lista*)malloc(sizeof(Lista));
 
-    // Verificar se o Malloc funcionou antes do return
+    // Verificar se o Malloc funcionou
     if(p != NULL) {
-        p->n = 0;
+        p->n = 0; // Lista Vazia
         return p;
     }
     else {
@@ -56,7 +58,6 @@ void RemoverElemento(Lista *p) {
         // Verificando o índice
         printf("\nQual o índice do valor que você deseja remover? ");
         scanf("%d", &indice);
-        
         if (indice >= 1 && indice <= p->n) {
             for (int i = indice; i < p->n; i++) {
                 p->itens[i-1] = p->itens[i];             

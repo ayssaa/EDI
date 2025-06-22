@@ -5,7 +5,7 @@ typedef struct noLista {
     int info;
     struct noLista *prox;
 } NoLista;
-
+//8:25
 void CriarLista(NoLista **p) {
     *p = NULL;
 }
