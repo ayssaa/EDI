@@ -1,13 +1,16 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+// Lista Simplesmente Encadeada
+
 typedef struct noLista {
     int info;
     struct noLista *prox;
 } NoLista;
-//8:25
+
 void CriarLista(NoLista **p) {
-    *p = NULL;
+    *p = NULL; // <=> lista = NULL;
+    printf("\nLista Criada com Sucesso.\n");
 }
 
 int EstaVazia(NoLista **p) {
@@ -15,40 +18,96 @@ int EstaVazia(NoLista **p) {
 }
 
 void InserirInicio(NoLista **p) {
-    NoLista *newp = (NoLista *) malloc(sizeof(NoLista));
+    NoLista *novono = (NoLista *) malloc(sizeof(NoLista)); // Criando novo nó
     int valor;
-    if(newp==NULL) {
-        printf("Não foi possível alocar espaço");
+
+    // Verificando malloc
+    if (novono == NULL) {
+        printf("\nNão foi possível alocar espaço.\n");
+    }
+
+    else {
+        printf("Qual valor você gostaria de armazenar? ");
+        scanf("%d", &valor);
+
+        novono->info = valor; // Novo nó recebe valor em info
+        novono->prox = *p; // Novo nó prox aponta para o primeiro nó (ou NULL) da lista
+        *p = novono; // Novo nó passa a ser o primeiro nó da lista
+        printf("\nValor %d armazenado com Sucesso.\n", valor);
+    }
+}
+
+void ImprimirLista(NoLista **p) {
+    if (EstaVazia(p) == 1) {
+        printf("\nLista Vazia!\n");
     }
     else {
-        printf("Qual valor você deseja adicionar?");
-        scanf("%d", &valor);
-        newp->info = valor;
-        newp->prox = *p;
-        *p = newp;
+        printf("\nLista: ");
+        for (NoLista *no = *p; no != NULL; no = no->prox) {
+            printf("%d ", no->info);
+        }
+        printf("\n");
     }
 }
 
-void BuscarElemento() { 
-
+int QuantidadeElemento(NoLista **p) {
+    int qnt = 0;
+    for (NoLista *no = *p; no != NULL; no = no->prox) {
+        qnt += 1;
+    }
+    return qnt;
 }
 
-void RemoverElemento() {
-
+NoLista* BuscarElemento(NoLista **p) { // retorna o endereço do nó onde está o info procurado
+    int infoprocurado;
+    NoLista *noprocurado;
+    
+    printf("\nQual valor você quer buscar? ");
+    scanf("%d", &infoprocurado);
+    for (NoLista *no = *p; no != NULL; no = no->prox) {
+        if (no->info == infoprocurado) {
+            noprocurado = no;
+            return noprocurado;
+        }
+    }
+    return NULL;
 }
 
-void LiberarLista() {
+void RemoverElemento(NoLista **p) {
+    NoLista *anterior = NULL;
+    NoLista *no = *p;
+    int valor;
 
+    printf("\nQual valor você deseja remover? ");
+    scanf("%d", &valor);
+    
+    // for que, encontra o nó anterior do que queremos remover, ou mantém o anterior como NULL
+    for(no = *p; no != NULL && no->info != valor; no = no->prox) {
+        anterior = no;
+    }
+
+    if (no == NULL) { // Elemento não encontrado
+        printf("\nElemento não encontrado.\n");
+        return;
+    }
+
+    else {
+        if (anterior == NULL) { // Se o anterior é NULL, significa que o nó a ser removido é o primeiro, logo vamos atualizar *p para apontar para o
+                                // 2° elemento, cujo endereço é no (primeiro elemento) -> prox <=> 2° elemento
+            *p = no->prox;
+            printf("\nO elemento %d foi removido com Sucesso.\n", valor);
+        }
+        else { // Nó removido está no meio da lista, nó anterior deve apontar para o prox do nó removido
+            anterior -> prox = no -> prox;
+            printf("\nO elemento %d foi removido com Sucesso.\n", valor);
+        }
+    }
+    free(no);
 }
 
-void QuantidadeElemento() {
-
+void LiberarLista(NoLista **p) {
+    /* Pensando... */
 }
-
-void ImprimirLista() {
-
-}
-
 
 void main() {
     int opcao;
@@ -74,22 +133,28 @@ void main() {
                 CriarLista(&lista);
                 break;
             case 2:
-                InserirInicio();
+                InserirInicio(&lista);
                 break;
             case 3:
-                RemoverElemento();
+                RemoverElemento(&lista);
                 break;
             case 4:
-                ImprimirLista();
+                ImprimirLista(&lista);
                 break;
             case 5:
-                QuantidadeElemento();
+                printf("\nA lista tem %d elementos.\n", QuantidadeElemento(&lista));
                 break;
             case 6:
-                BuscarElemento();
+                NoLista *noprocurado = BuscarElemento(&lista);
+                if (noprocurado == NULL){
+                    printf("\nElemento não encontrado\n");
+                }
+                else {
+                    printf("\nO seu elemento está no endereço %p\n", noprocurado);
+                }
                 break;
             case 7:
-                LiberarLista();
+                LiberarLista(&lista);
                 break;
         }
 
