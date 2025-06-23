@@ -60,14 +60,13 @@ int QuantidadeElemento(NoLista **p) {
 
 NoLista* BuscarElemento(NoLista **p) { // retorna o endereço do nó onde está o info procurado
     int infoprocurado;
-    NoLista *noprocurado;
     
     printf("\nQual valor você quer buscar? ");
     scanf("%d", &infoprocurado);
+    
     for (NoLista *no = *p; no != NULL; no = no->prox) {
         if (no->info == infoprocurado) {
-            noprocurado = no;
-            return noprocurado;
+            return no;
         }
     }
     return NULL;
@@ -106,7 +105,16 @@ void RemoverElemento(NoLista **p) {
 }
 
 void LiberarLista(NoLista **p) {
-    /* Pensando... */
+    NoLista *no;
+    NoLista *temp;
+
+    for (no = *p; no != NULL; no = temp) {
+        temp = no->prox;
+        free(no);
+    }
+
+    *p = NULL;
+    printf("\nLista liberada com sucesso.\n");
 }
 
 void main() {

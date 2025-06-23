@@ -95,7 +95,7 @@ void main() {
     Lista *lista = NULL;
     do {
         // Menu
-        printf("\n---Bem vindo ao Criador de Lista----\n");
+        printf("\n---Bem vindo ao Criador de Lista Sequencial----\n");
         printf("1- Criar Lista\n");
         printf("2- Inserir no Final da Lista\n");
         printf("3- Ver Lista\n");
