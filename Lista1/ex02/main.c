@@ -1,24 +1,25 @@
-# include <stdlib.h>
 # include <stdio.h>
+# include <stdlib.h>
 
-int soma_impares(int x) {
-    int soma = 0, quantidade = 0;
+int soma_impares(int n) {
+    int soma = 0;
+    int qnt = 0;
 
-    for (int i = 1; quantidade != x; i++) {
+    for (int i=0; qnt != n; i++) {
         if (i % 2 != 0) {
-            quantidade += 1;
             soma += i;
+            qnt += 1;
         }
     }
     return soma;
 }
 
 void main() {
-    int n;
+    int valor;
 
+    printf("\n---Soma Ímpares---\n");
     printf("Digite um valor: ");
-    scanf("%d", &n);
+    scanf("%d", &valor);
 
-    printf("A soma dos n primeiros números naturais ímpares é: %d", soma_impares(n));
-
+    printf("A soma dos primeiros %d números ímpares é: %d", valor, soma_impares(valor));
 }

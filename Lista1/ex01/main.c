@@ -1,28 +1,30 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-int primo(int x){
-    if (x <= 1) {
+int primo(int n) {
+    if (n <= 1) {
         return 0;
     }
-    for (int i = 2; i < x; i++){
-        if (x % i == 0) {
-            return 0;
+
+    for (int i = 2; i < n; i++) {
+        if (n % i == 0) {
+          return 0;
         }
     }
     return 1;
 }
 
 void main() {
-    int n;
-    
-    printf("Digite um valor:");
-    scanf("%d", &n);
+    int valor;
 
-    if (primo(n) == 1) {
-        printf("O número %d é primo.\n", n);
+    printf("\n---Testando se é Primo---\n");
+    printf("Digite um valor: ");
+    scanf("%d", &valor);
+
+    if (primo(valor) == 0) {
+        printf("\nO valor %d não é primo.\n", valor);
     }
     else {
-        printf("O número %d não é primo.\n", n);
+        printf("\nO valor %d é primo.\n", valor);
     }
 }
