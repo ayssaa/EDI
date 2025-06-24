@@ -175,7 +175,6 @@ NoLista* separa(NoLista **p, int n) {
 
 int compara(NoLista **p1, NoLista **p2) {
     int diferente = 0;
-
     NoLista *no;
     NoLista *no2;
 
@@ -258,5 +257,5 @@ void main() {
     InsereOrdenado(&ordenada, 2);
     printf("\nSegue uma lista ordenada!\n");
     ImprimirLista(&ordenada);
-
+    
 }

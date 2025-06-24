@@ -1,0 +1,91 @@
+// Implementando uma lista com Cabeça e Cauda
+# include <stdlib.h>
+# include <stdio.h>
+
+typedef struct noLista {
+    int info;
+    struct noLista *prox;
+} NoLista;
+
+typedef struct lista {
+    NoLista *cab;
+    NoLista *cau;
+} Lista;
+
+void CriarLista(Lista *p) {
+    p->cab = (NoLista *) malloc(sizeof(NoLista));
+    p->cau = (NoLista *) malloc(sizeof(NoLista));
+    
+    p->cab->prox = p->cau;
+    p->cau->prox = NULL;
+}
+
+int EstaVazia(Lista *p) {
+    return (p->cab->prox == p->cau);
+}
+
+void InserirElementoInicio(Lista *p, int valor) {
+    NoLista *novono = (NoLista *) malloc(sizeof(NoLista));
+    
+    if (novono == NULL) {
+        printf("Não foi possivel alocar espaço!");
+    }
+    else {
+        novono->info = valor;
+        novono->prox = p->cab->prox;
+        p->cab->prox = novono;
+    }
+}
+
+void InserirElementoFim(Lista *p, int valor) {
+    NoLista *novono = (NoLista *) malloc(sizeof(NoLista));
+    
+    if(novono == NULL) {
+        printf("Não foi possível alocar espaço");
+    }
+    else {
+        novono->prox = NULL;
+        p->cau->info = valor;
+        p->cau->prox = novono;
+        p->cau= novono;
+    }
+}
+
+void ImprimeLista(Lista *p) {
+    if (EstaVazia(p) == 1) {
+        printf("A lista está Vazia.");
+    }
+    else {
+        for (NoLista *no = p->cab->prox; no != p->cau; no = no->prox) {
+            printf("%d ", no->info);
+        }   
+    }
+}
+
+
+/*
+void criarVazia(NoLista *l) (ok)
+int estaVazia(Lista* l) (ok)
+void inserirElementoInicio(Lista* l, int v) (ok)
+void inserirElementoFim(Lista* l, int v) (ok)
+void imprimeLista(Lista* l) (ok)
+void removerElemento(Lista* l, int v)
+void liberarLista(Lista* l)
+*/
+
+
+void main() {
+    Lista lista;
+    
+    // Criando a lista
+    CriarLista(&lista);
+    
+    // Inserindo elementos na lista
+    InserirElementoInicio(&lista, 1);
+    InserirElementoInicio(&lista, 2);
+    InserirElementoInicio(&lista, 3);
+    
+    // Vendo a lista
+    ImprimeLista(&lista);
+    
+}

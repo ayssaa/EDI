@@ -1,3 +1,4 @@
+// Implementando uma lista com Descritor
 # include <stdio.h>
 # include <stdlib.h>
 
@@ -195,6 +196,7 @@ Descritor separa(Descritor *p, int valor) {
 7- separar
 8- comparar
 */
+
 
 void main() {
     Descritor lista;
