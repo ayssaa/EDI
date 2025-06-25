@@ -42,23 +42,22 @@ void InserirInicio(Descritor *p, int valor) {
     }
 }
 
-void InserirFim(Descritor *p, int valor) {
-    NoLista *novono = (NoLista *) malloc(sizeof(int));
+void InserirNoFim(Descritor *p, int valor) {
+    NoLista *novono = (NoLista *) malloc(sizeof(NoLista));
     
     if (novono == NULL) {
-        printf("\nNão foi possível alocar espaço!\n");
+        printf("Não foi possível alocar espaço");
     }
     else {
         novono->info = valor;
-        if(EstaVazia(p) == 1) {
+        novono->prox = NULL;
+        if(EstaVazia(p) == 1){
             p->prim = novono;
-            p->ult = novono;
         }
-        else{
+        else {
             p->ult->prox = novono;
-            p->ult = novono;
         }
-        
+        p->ult = novono;
         p->n += 1;
     }
 }

@@ -65,6 +65,7 @@ void RemoverElemento(NoLista **p, int valor) {
             // Caso 3: O elemento está na lista e: está no meio da lista ou é o último elemento
             anterior->prox = no->prox;
         }
+        free(no);
     }
 }
 
