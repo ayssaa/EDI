@@ -215,6 +215,17 @@ dividirEmDuas() //divido uma lista em duas
 
 */
 
+void imprimeRec(Lista *p) {
+    if(p->cab->prox == p->cau) {
+		return;
+	}
+	else {
+		printf("%d ", p->cab->prox->info);
+		imprimeRec(p->cab->prox);
+	}
+}
+
+
 void main() {
 	Lista lista;
 
@@ -227,7 +238,7 @@ void main() {
 	inserirOrdenadamenteDecrescente(&lista, 2);
 
 	// Vendo Lista
-	ImprimirLista(&lista);
+	imprimeRec(&lista);
 
 	// Valor procurado: 1
 	printf("\nO endereço de 1: %p", buscaElemento(&lista, 1));

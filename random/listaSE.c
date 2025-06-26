@@ -194,69 +194,103 @@ int compara(NoLista **p1, NoLista **p2) {
     }
 }
 
+void ImprimirRecursivo(NoLista **p) {
+    if (*p == NULL) {
+        return;
+    }
+    else {
+        printf("%d ", (*p)->info);
+        ImprimirRecursivo(&((*p)->prox));
+    }
+}
+
+void ImprimirInversoRecursivo(NoLista **p) {
+    if (*p == NULL) {
+        return;
+    }
+    else {
+        ImprimirInversoRecursivo(&((*p)->prox));
+        printf("%d ", (*p)->info);
+    }
+}
+
 void main() {
+    // Aprendendo Recursividade
     NoLista *lista;
-    NoLista *lista2;
-    
-    // Criando lista
     CriarLista(&lista);
-    CriarLista(&lista2);
-    
-    // Inserindo elementos na lista
     InserirInicio(&lista, 1);
     InserirInicio(&lista, 2);
     InserirInicio(&lista, 3);
+    ImprimirRecursivo(&lista);
+    printf("\n");
+    ImprimirInversoRecursivo(&lista);
+
+
+
+
+    // NoLista *lista;
+    // NoLista *lista2;
     
-    // Mostrando lista
-    ImprimirLista(&lista);
+    // // Criando lista
+    // CriarLista(&lista);
+    // CriarLista(&lista2);
     
-    // Buscando um valor na lista
-    NoLista *auxiliar = Busca(&lista, 1);
-    printf("\nEndereço do nó procurado: %p", auxiliar);
+    // // Inserindo elementos na lista
+    // InserirInicio(&lista, 1);
+    // InserirInicio(&lista, 2);
+    // InserirInicio(&lista, 3);
     
-    // Removendo um elemento da lista
-            // RemoverElemento(&lista, 2);
-            // printf("\n");
-            // ImprimirLista(&lista);
+    // // Mostrando lista
+    // ImprimirLista(&lista);
     
-    // Contando quantos elementos há na lista
-    printf("\nA lista possui %d elementos.", QuantidadeElemento(&lista));
+    // // Buscando um valor na lista
+    // NoLista *auxiliar = Busca(&lista, 1);
+    // printf("\nEndereço do nó procurado: %p", auxiliar);
     
-    // Endereço do último elementos
-    auxiliar = ultimo(&lista);
-    printf("\nEndereço do último nó: %p", auxiliar);
+    // // Removendo um elemento da lista
+    //         // RemoverElemento(&lista, 2);
+    //         // printf("\n");
+    //         // ImprimirLista(&lista);
     
-    // Contando quantos valores são maiores que X
-    printf("\nExiste %d números maiores que 2 na lista.\n", maiores(&lista, 2));
+    // // Contando quantos elementos há na lista
+    // printf("\nA lista possui %d elementos.", QuantidadeElemento(&lista));
     
-    // Concatenando lista e lista2
-    InserirInicio(&lista2, 4);
-    InserirInicio(&lista2, 5);
-    InserirInicio(&lista2, 6);
-    ImprimirLista(&lista2);
-    auxiliar = concatena(&lista, &lista2);
-    printf("\nLista concatenada: \n");
-    ImprimirLista(&auxiliar);
+    // // Endereço do último elementos
+    // auxiliar = ultimo(&lista);
+    // printf("\nEndereço do último nó: %p", auxiliar);
+    
+    // // Contando quantos valores são maiores que X
+    // printf("\nExiste %d números maiores que 2 na lista.\n", maiores(&lista, 2));
+    
+    // // Concatenando lista e lista2
+    // InserirInicio(&lista2, 4);
+    // InserirInicio(&lista2, 5);
+    // InserirInicio(&lista2, 6);
+    // ImprimirLista(&lista2);
+    // auxiliar = concatena(&lista, &lista2);
+    // printf("\nLista concatenada: \n");
+    // ImprimirLista(&auxiliar);
     
     
-    // Separando as listas de novo
-    printf("\nAntes de separar:\n");
-    ImprimirLista(&auxiliar);
-    printf("\nDepois de separar:\n");
-    NoLista *auxiliar2 = separa(&auxiliar, 6);
-    printf("\nLista parte 1:\n");
-    ImprimirLista(&auxiliar);
-    printf("\nLista parte 2:\n");
-    ImprimirLista(&auxiliar2);
+    // // Separando as listas de novo
+    // printf("\nAntes de separar:\n");
+    // ImprimirLista(&auxiliar);
+    // printf("\nDepois de separar:\n");
+    // NoLista *auxiliar2 = separa(&auxiliar, 6);
+    // printf("\nLista parte 1:\n");
+    // ImprimirLista(&auxiliar);
+    // printf("\nLista parte 2:\n");
+    // ImprimirLista(&auxiliar2);
     
-    // Criando uma Lista Ordenada
-    NoLista *ordenada;
-    CriarLista(&ordenada);
-    InsereOrdenado(&ordenada, 1);
-    InsereOrdenado(&ordenada, 6);
-    InsereOrdenado(&ordenada, 3);
-    InsereOrdenado(&ordenada, 2);
-    printf("\nSegue uma lista ordenada!\n");
-    ImprimirLista(&ordenada);
+    // // Criando uma Lista Ordenada
+    // NoLista *ordenada;
+    // CriarLista(&ordenada);
+    // InsereOrdenado(&ordenada, 1);
+    // InsereOrdenado(&ordenada, 6);
+    // InsereOrdenado(&ordenada, 3);
+    // InsereOrdenado(&ordenada, 2);
+    // printf("\nSegue uma lista ordenada!\n");
+    // ImprimirLista(&ordenada);
     
+
 }

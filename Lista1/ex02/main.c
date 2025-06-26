@@ -4,9 +4,8 @@
 int soma_impares(int n) {
     int soma = 0;
     int qnt = 0;
-
-    for (int i=0; qnt != n; i++) {
-        if (i % 2 != 0) {
+    for(int i = 1; qnt < n; i++) {
+        if(i % 2 != 0) {
             soma += i;
             qnt += 1;
         }
@@ -15,11 +14,32 @@ int soma_impares(int n) {
 }
 
 void main() {
-    int valor;
+    int valor = 3, retorno;
 
-    printf("\n---Soma Ímpares---\n");
-    printf("Digite um valor: ");
-    scanf("%d", &valor);
-
-    printf("A soma dos primeiros %d números ímpares é: %d", valor, soma_impares(valor));
+    printf("%d", soma_impares(valor));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

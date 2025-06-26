@@ -1,70 +1,71 @@
-# include <stdlib.h>
 # include <stdio.h>
+# include <stdlib.h>
 
-struct realtype {
+typedef struct realtype {
     int left;
     int right;
-};
+} Real; // left.right
 
-typedef struct realtype Real;
+void leReal(Real *r) {
+    printf("Digite a parte inteira: ");
+    scanf("%d", &(r->left));
 
-void leReal(Real *p) {
-    printf("Digite a parte inteira do número real: ");
-    scanf("%d", &(p->left));
-
-    printf("Digite a parte decimal do número real: ");
-    scanf("%d", &(p->right));
+    printf("Digite a parte fracional: ");
+    scanf("%d", &(r->right));
 }
 
-void imprimeReal(Real *p) {
-    printf("Número Real: %d.%d\n", p->left, p->right);
+void imprimeReal(Real *r) {
+    printf("%d.%02d", r->left, r->right);
 }
 
-Real soma(Real *p1, Real *p2) {
-    Real resultado;
-
-    resultado.left = p1->left + p2->left;
-    resultado.right = p1->right + p2->right;
-
-    if (resultado.right >= 100) {
-        resultado.left += 1;
-        resultado.right -= 100;
+Real soma(Real *r1, Real *r2) {
+    Real result;
+    result.left = r1->left + r2->left;
+    result.right = r1->right + r2->right;
+    if(result.right >= 100) {
+        result.left += 1;
+        result.right -= 100;
     }
-
-    return resultado;
+    return result;
 }
 
 void main() {
-    Real n1, n2, resultado;
-    int opcao;
-
-    do {
-        printf("------Boas Vindas ao Leitor de número Real-----\n");
-        printf("1. Ler real 1\n");
-        printf("2. Ler real 2\n");
-        printf("3. Imprimir real\n");
-        printf("4. Somar reais\n");
-        printf("0. Sair\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
-
-        switch(opcao) {
-            case 1:
-                leReal(&n1);
-                break;
-            case 2:
-                leReal(&n2);
-                break;
-            case 3:
-                imprimeReal(&n1);
-                break;
-            case 4:
-                resultado = soma(&n1, &n2);
-                printf("Resultado da soma: ");
-                imprimeReal(&resultado);
-                break;
-        }
-
-    } while (opcao != 0);
+    Real real, real2, resultado;
     
+    leReal(&real);
+    leReal(&real2);
+
+    imprimeReal(&real);
+    printf("\n");
+    imprimeReal(&real2);
+    printf("\n");
+    resultado = soma(&real, &real2);
+    imprimeReal(&resultado);
 }
+
+// c) Escreva uma função chamada soma que recebe duas estruturas Real como parâmetros e defina
+// o valor de uma terceira estrutura para representar o número que seja a soma das duas estruturas
+// de entrada. Seu protótipo é:
+
+// Real soma(Real* r1, Real * r2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
