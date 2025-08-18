@@ -1,4 +1,4 @@
-// Implementando Fila com Vetor!
+// Implementando Fila com Lista Simplesmente Encadeada!
 # include <stdio.h>
 # include <stdlib.h>
 
