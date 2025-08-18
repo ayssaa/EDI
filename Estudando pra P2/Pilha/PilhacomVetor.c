@@ -82,7 +82,7 @@ void main() {
     printf("\n");
     imprime(pilha);
     
-    // Vendo o topo da Pilha pós pop
+    // Vendo o topo da Pilha pos pop
     printf("\nO topo da pilha é: %.2f", verTopo(pilha));
     
 }
