@@ -1,4 +1,5 @@
 // Implementando uma Arvore Binaria
+
 # include <stdio.h>
 # include <stdlib.h>
 
@@ -89,4 +90,21 @@ void main() {
 	
 	// Quantidade de nós
 	printf("\nA árvore tem %d nós", qntNos(a));
+	
+	// Liberando nós para termos uma árvore <a <b<><>> <c<><>>> (a b c)
+	a->esq->dir = liberarArvore(d);
+	a->dir->dir = liberarArvore(f);
+	a->dir->esq = liberarArvore(e);
+	
+	// Criando um ramo (d e f)
+	f = criarArvore('f', criarArvoreVazia(), criarArvoreVazia());
+	e = criarArvore('e', criarArvoreVazia(), criarArvoreVazia());
+	d = criarArvore('d', e, f);
+	
+	// Enxertando!
+	a->esq->esq = d;
+	
+	// Imprimindo Arvore
+	printf("\n");
+    imprimeArvore(a);
 }
