@@ -78,6 +78,40 @@ void liberar(Fila *f) {
     free(f);
 }
 
+float primeiroFila(Fila *f) {
+	if(estaVazia(f) == 1) {
+		printf("A lista está Vazia!");
+	}
+	else {
+		float v = f->ini->info;
+		return v;
+	}
+}
+
+void furaFila(Fila *f, float v) {
+	NoLista *no, *anterior = NULL;
+	for(no = f->ini; no != NULL && no->info != v; no = no->prox) {
+		anterior = no;
+	}
+
+	if(no == NULL) { // não achou o valor na fila
+		printf("Valor não encontrado!");
+	}
+	else { // achou o valor na fila
+		if(anterior == NULL) { // já é o primeiro da fila
+			return;
+		}
+		else { // está no meio ou no fim da fila!
+			anterior->prox = no->prox;
+			no->prox = f->ini;
+			f->ini = no;
+			if(f->fim == no) { // se for o último da fila, então o f->fim tem que atualizar
+				f->fim = anterior;
+			}
+		}
+	}
+}
+
 void main() {
     // Criando uma Fila
     Fila *fila;
@@ -92,9 +126,16 @@ void main() {
     imprimeFila(fila);
     
     // Removendo um elemento
-    remover(fila);
+    // remover(fila);
     
-    // Vendo Pilha
+    // Vendo Fila
+    printf("\n");
+    imprimeFila(fila);
+
+	// Fura Fila
+	furaFila(fila, 2);
+
+	// Vendo Fila
     printf("\n");
     imprimeFila(fila);
 }

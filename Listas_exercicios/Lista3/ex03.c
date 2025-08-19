@@ -95,7 +95,7 @@ void concatenaPilhasB(Pilha *p1, Pilha *p2) {
 // Letra C)
 // Sem usar funções prontas
 void concatenaPilhasC(Pilha *p1, Pilha *p2) {
-    NoLista *temp, *no;
+    NoLista *no;
 
     for (no = p2->prim; no != NULL; no = no->prox) {
         if (no->prox == NULL) {
@@ -105,7 +105,6 @@ void concatenaPilhasC(Pilha *p1, Pilha *p2) {
             break;
         }
     }
-
 }
 
 void main() {
@@ -121,9 +120,9 @@ void main() {
     push(pilha1, 3);
 
     // Pilha 2
-    push(pilha2, 4);
-    push(pilha2, 5);
-    push(pilha2, 6);
+    push(pilha1, 4);
+    push(pilha1, 5);
+    push(pilha1, 6);
 
     // Vendo cada Pilha
     // Pilha 1
