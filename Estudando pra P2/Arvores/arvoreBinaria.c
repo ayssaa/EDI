@@ -42,6 +42,13 @@ int pertenceArvore(Arvore* arv, char c) {
     }
 }
 
+/*
+Obs.: A função Imprime pode ser:
+. Pré-Ordem: nó, esquerda, direita
+. Ordem Simétrica: esquerda, nó, direita
+. Pós-Ordem: esquerda, direita, nó
+E para alterar isso na função, basta trocar a ordem da 'recursividade' e 'print'!
+*/
 void imprimeArvore(Arvore *arv) {
     printf("<");
     if(estaVazia(arv) != 1) {
