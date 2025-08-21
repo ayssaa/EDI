@@ -113,7 +113,16 @@ int iguais(Arvore *a, Arvore *b) {
 
 // 2) d) Copia
 Arvore* copia(Arvore *a){
-    Arvore *copia = criarArvoreVazia();
+    if(estaVazia(a) != 1) {
+        Arvore *copiado = (Arvore*) malloc(sizeof(Arvore));
+        copiado->info = a->info;
+        copiado->esq = copia(a->esq);;
+        copiado->dir = copia(a->dir);;
+        return copiado;
+    }
+    else {
+        return NULL;
+    }    
 }
 
 // 2) e) Maior valor (considerando int's)
@@ -151,7 +160,4 @@ void main() {
 
     // 2) b)
     printf("\n A letra 'a' aparece %d vezes", qtdeChar(a, 'a'));
-
-    //2
-
 }
