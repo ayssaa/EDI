@@ -59,10 +59,10 @@ void imprimeArvore(Arvore *arv) {
     printf(">");
 }
 
-Arvore* liberarArvore(Arvore* arv) {
+Arvore* liberarArvore(Arvore *arv) {
     if(estaVazia(arv) != 1) {
-        liberarArvore(arv->esq);
-        liberarArvore(arv->dir);
+        arv->esq = liberarArvore(arv->esq);
+        arv->dir = liberarArvore(arv->dir);
         free(arv);
     }
     return NULL;

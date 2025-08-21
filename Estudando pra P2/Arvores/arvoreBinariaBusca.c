@@ -20,27 +20,30 @@ void imprimeArvore(Arvore* arv) { // ordem simétrica ou ordem crescente!
 	}
 }
 
-Arvore* liberarArvore(Arvore* arv) {
-	if(estaVazia(arv) != 1) {
-		liberarArvore(arv->esq);
-		liberarArvore(arv->dir);
-		free(arv);
-	}
-	else {
-		return NULL;
-	}
+Arvore* liberarArvore(Arvore *arv) {
+    if(estaVazia(arv) != 1) {
+        arv->esq = liberarArvore(arv->esq);
+        arv->dir = liberarArvore(arv->dir);
+        free(arv);
+    }
+    return NULL;
 }
 
-int pertenceArvore(Arvore* arv, int v) {
-	if(estaVazia(arv) != 1) {
-		if(arv->info == v) {
-			return 1;
-		}
-		return (pertenceArvore(arv->esq, v) || pertenceArvore(arv->dir, v));
-	}
-	else {
-		return 0;
-	}
+int pertenceArvore(Arvore *arv, int n) {
+    if(estaVazia(arv) != 1) {
+        if(arv->info == n) {
+            return 1;
+        }
+        else if(arv->info > n) {
+            return pertenceArvore(arv->esq, n);
+        }
+        else {
+            return (pertenceArvore(arv->dir, n));
+        }
+    }
+    else {
+        return 0;
+    }
 }
 
 // Funçoes da Árvore Binária de Busca

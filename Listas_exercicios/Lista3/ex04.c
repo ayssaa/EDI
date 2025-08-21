@@ -70,46 +70,30 @@ float remover(Fila *f) {
 
 // Letra A)
 // Usando TAD fila
-void combinaFilasA(Fila* f_res, Fila *f1, Fila *f2) {
-    /*
-    for(NoLista *no = f1->ini; no != NULL; no = no->prox) {
-        float v = remover(f1);
-        inserir(f_res, v);
-    }
-    
-    for(NoLista *no = f2->ini; no != NULL; no = no->prox) {
-        float v = remover(f2);
-        inserir(f_res, v);
-    }
-    */
-    
-    while(estaVazia(f1) != 1 || estaVazia(f2) != 1) {
-        if(estaVazia(f1) == 0) {
-            float v1 = remover(f1);
-            inserir(f_res, v1);
+void combinaFilas(Fila* fres, Fila* f1, Fila* f2) {
+    while (estaVazia(f1) != 1 || estaVazia(f2) != 1) {
+        if(estaVazia(f1) != 1) {
+            inserir(fres, remover(f1));
         }
-        if(estaVazia(f2) == 0) {
-            float v2 = remover(f2);
-        inserir(f_res, v2);
+        if(estaVazia(f2) != 1) {
+            inserir(fres, remover(f2));
         }
     }
 }
 
 // Letra B)
 // Recursivo
-void combinaFilasB(Fila* f_res, Fila *f1, Fila *f2) {
-    if(estaVazia(f1) != 1 || estaVazia(f2) != 1) {
-        float v1 = remover(f1);
-        inserir(f_res, v1);
-        float v2 = remover(f2);
-        inserir(f_res, v2);
-        combinaFilasB(f_res, f1, f2);
-    }
-    else {
-        return;
+void combinaFilas(Fila* fres, Fila* f1, Fila* f2) {
+    if (estaVazia(f1) != 1 || estaVazia(f2) != 1) {
+        if(estaVazia(f1) != 1) {
+            inserir(fres, remover(f1));
+        }
+        if(estaVazia(f2) != 1) {
+            inserir(fres, remover(f2));
+        }
+        combinaFilas(fres, f1, f2);
     }
 }
-
 void main() {
     // Criando Fila
     Fila *fila1, *fila2, *fila3;

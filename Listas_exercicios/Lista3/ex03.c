@@ -70,26 +70,26 @@ void liberarPilha(Pilha *p) {
 void concatenaPilhasA(Pilha *p1, Pilha *p2) {
     Pilha *auxiliar = criarPilha();
 
-    while(estaVazia(p2) == 0) {
-        float v = pop(p2);
-        push(auxiliar, v);
+    while(estaVazia(p2) != 1) {
+        push(auxiliar, pop(p2));
     }
 
-    while(estaVazia(auxiliar) == 0) {
-        float v = pop(auxiliar);
-        push(p1, v);
+    while(estaVazia(auxiliar) != 1) {
+        push(p1, pop(auxiliar));
     }
 }
 
 // Letra B)
 // Usando recursividade
 void concatenaPilhasB(Pilha *p1, Pilha *p2) {
-    if(estaVazia(p2) == 1) {
+    if(estaVazia(p2) != 1) {
+        float v = pop(p2);
+        concatenaPilhas(p1, p2);
+        push(p1, v);
+    }
+    else {
         return;
     }
-    float v = pop(p2);
-    concatenaPilhasB(p1, p2);
-    push(p1, v);
 }
 
 // Letra C)
