@@ -1,6 +1,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+// lista com Descritor
+
 typedef struct noLista {
     int info;
     struct noLista *prox;

@@ -1,6 +1,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+// lista com cabeça e cauda
+
 typedef struct noLista {
     int info;
     struct noLista *prox;
